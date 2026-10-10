@@ -54,9 +54,9 @@ namespace Formulario_De_Regristro_Actividad04
             this.lblnombres.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnombres.Location = new System.Drawing.Point(104, 24);
             this.lblnombres.Name = "lblnombres";
-            this.lblnombres.Size = new System.Drawing.Size(90, 20);
+            this.lblnombres.Size = new System.Drawing.Size(96, 20);
             this.lblnombres.TabIndex = 0;
-            this.lblnombres.Text = "Nombres:";
+            this.lblnombres.Text = "Nombres: ";
             // 
             // lblapellido
             // 
@@ -64,21 +64,21 @@ namespace Formulario_De_Regristro_Actividad04
             this.lblapellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblapellido.Location = new System.Drawing.Point(104, 60);
             this.lblapellido.Name = "lblapellido";
-            this.lblapellido.Size = new System.Drawing.Size(92, 20);
+            this.lblapellido.Size = new System.Drawing.Size(98, 20);
             this.lblapellido.TabIndex = 1;
-            this.lblapellido.Text = "Apellidos:";
+            this.lblapellido.Text = "Apellidos: ";
             // 
             // lbltelefono
             // 
             this.lbltelefono.AutoSize = true;
-            this.lbltelefono.BackColor = System.Drawing.SystemColors.Control;
+            this.lbltelefono.BackColor = System.Drawing.Color.IndianRed;
             this.lbltelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltelefono.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbltelefono.Location = new System.Drawing.Point(104, 105);
             this.lbltelefono.Name = "lbltelefono";
-            this.lbltelefono.Size = new System.Drawing.Size(87, 20);
+            this.lbltelefono.Size = new System.Drawing.Size(93, 20);
             this.lbltelefono.TabIndex = 2;
-            this.lbltelefono.Text = "Telefono:";
+            this.lbltelefono.Text = "Telefono: ";
             // 
             // lbledad
             // 
@@ -86,9 +86,9 @@ namespace Formulario_De_Regristro_Actividad04
             this.lbledad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbledad.Location = new System.Drawing.Point(104, 148);
             this.lbledad.Name = "lbledad";
-            this.lbledad.Size = new System.Drawing.Size(57, 20);
+            this.lbledad.Size = new System.Drawing.Size(63, 20);
             this.lbledad.TabIndex = 3;
-            this.lbledad.Text = "Edad:";
+            this.lbledad.Text = "Edad: ";
             // 
             // lblestatura
             // 
@@ -96,29 +96,29 @@ namespace Formulario_De_Regristro_Actividad04
             this.lblestatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblestatura.Location = new System.Drawing.Point(104, 189);
             this.lblestatura.Name = "lblestatura";
-            this.lblestatura.Size = new System.Drawing.Size(86, 20);
+            this.lblestatura.Size = new System.Drawing.Size(92, 20);
             this.lblestatura.TabIndex = 4;
-            this.lblestatura.Text = "Estatura:";
+            this.lblestatura.Text = "Estatura: ";
             // 
             // texnombres
             // 
             this.texnombres.Location = new System.Drawing.Point(214, 24);
             this.texnombres.Name = "texnombres";
-            this.texnombres.Size = new System.Drawing.Size(133, 22);
+            this.texnombres.Size = new System.Drawing.Size(142, 22);
             this.texnombres.TabIndex = 5;
             // 
             // texapellido
             // 
             this.texapellido.Location = new System.Drawing.Point(214, 60);
             this.texapellido.Name = "texapellido";
-            this.texapellido.Size = new System.Drawing.Size(133, 22);
+            this.texapellido.Size = new System.Drawing.Size(142, 22);
             this.texapellido.TabIndex = 6;
             // 
             // textelefono
             // 
             this.textelefono.Location = new System.Drawing.Point(214, 100);
             this.textelefono.Name = "textelefono";
-            this.textelefono.Size = new System.Drawing.Size(133, 22);
+            this.textelefono.Size = new System.Drawing.Size(142, 22);
             this.textelefono.TabIndex = 7;
             // 
             // texedad
@@ -130,23 +130,24 @@ namespace Formulario_De_Regristro_Actividad04
             // 
             // texestatura
             // 
-            this.texestatura.Location = new System.Drawing.Point(223, 189);
+            this.texestatura.Location = new System.Drawing.Point(214, 189);
             this.texestatura.Name = "texestatura";
-            this.texestatura.Size = new System.Drawing.Size(133, 22);
+            this.texestatura.Size = new System.Drawing.Size(142, 22);
             this.texestatura.TabIndex = 9;
             // 
             // groupgenero
             // 
+            this.groupgenero.BackColor = System.Drawing.Color.Gainsboro;
             this.groupgenero.Controls.Add(this.radotro);
             this.groupgenero.Controls.Add(this.radfeme);
             this.groupgenero.Controls.Add(this.radMascu);
-            this.groupgenero.Location = new System.Drawing.Point(63, 233);
+            this.groupgenero.Location = new System.Drawing.Point(75, 238);
             this.groupgenero.Name = "groupgenero";
-            this.groupgenero.Size = new System.Drawing.Size(335, 103);
+            this.groupgenero.Size = new System.Drawing.Size(322, 93);
             this.groupgenero.TabIndex = 10;
             this.groupgenero.TabStop = false;
             this.groupgenero.Text = "Genero";
-            this.groupgenero.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // radotro
             // 
@@ -176,7 +177,7 @@ namespace Formulario_De_Regristro_Actividad04
             // 
             this.radMascu.AutoSize = true;
             this.radMascu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radMascu.Location = new System.Drawing.Point(6, 45);
+            this.radMascu.Location = new System.Drawing.Point(0, 45);
             this.radMascu.Name = "radMascu";
             this.radMascu.Size = new System.Drawing.Size(101, 21);
             this.radMascu.TabIndex = 0;
@@ -186,29 +187,33 @@ namespace Formulario_De_Regristro_Actividad04
             // 
             // butguardar
             // 
+            this.butguardar.BackColor = System.Drawing.Color.Gainsboro;
             this.butguardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butguardar.Location = new System.Drawing.Point(75, 356);
+            this.butguardar.Location = new System.Drawing.Point(87, 356);
             this.butguardar.Name = "butguardar";
             this.butguardar.Size = new System.Drawing.Size(115, 56);
             this.butguardar.TabIndex = 11;
             this.butguardar.Text = "Guardar";
-            this.butguardar.UseVisualStyleBackColor = true;
+            this.butguardar.UseVisualStyleBackColor = false;
             this.butguardar.Click += new System.EventHandler(this.butguardar_Click);
             // 
             // butlimpiar
             // 
+            this.butlimpiar.BackColor = System.Drawing.Color.Gainsboro;
             this.butlimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butlimpiar.Location = new System.Drawing.Point(214, 356);
+            this.butlimpiar.Location = new System.Drawing.Point(230, 356);
             this.butlimpiar.Name = "butlimpiar";
             this.butlimpiar.Size = new System.Drawing.Size(126, 56);
             this.butlimpiar.TabIndex = 12;
             this.butlimpiar.Text = "Limpiar";
-            this.butlimpiar.UseVisualStyleBackColor = true;
+            this.butlimpiar.UseVisualStyleBackColor = false;
+            this.butlimpiar.Click += new System.EventHandler(this.butlimpiar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.IndianRed;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.butlimpiar);
             this.Controls.Add(this.butguardar);
@@ -224,7 +229,7 @@ namespace Formulario_De_Regristro_Actividad04
             this.Controls.Add(this.lblapellido);
             this.Controls.Add(this.lblnombres);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Formulario_de_Registro";
             this.groupgenero.ResumeLayout(false);
             this.groupgenero.PerformLayout();
             this.ResumeLayout(false);
