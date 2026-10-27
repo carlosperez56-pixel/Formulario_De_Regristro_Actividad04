@@ -147,7 +147,6 @@ namespace Formulario_De_Regristro_Actividad04
             this.groupgenero.TabIndex = 10;
             this.groupgenero.TabStop = false;
             this.groupgenero.Text = "Genero";
-            
             // 
             // radotro
             // 
@@ -195,7 +194,7 @@ namespace Formulario_De_Regristro_Actividad04
             this.butguardar.TabIndex = 11;
             this.butguardar.Text = "Guardar";
             this.butguardar.UseVisualStyleBackColor = false;
-            this.butguardar.Click += new System.EventHandler(this.butguardar_Click);
+            this.butguardar.Click += new System.EventHandler(this.butguardar_click);
             // 
             // butlimpiar
             // 

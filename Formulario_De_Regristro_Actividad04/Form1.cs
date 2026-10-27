@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
+using System.IO; //Libreria para lectura de archivos TXT
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
+using System.Text.RegularExpressions; //Libreria para evaluaciones de estructura de texto
+using MySql.Data.MySqlClient; //Libreria para la conexion y uso de MySQL
+
+
+
 
 namespace Formulario_De_Regristro_Actividad04
 {
     public partial class Form1 : Form
     {
+        string SQLConection = "Server=127.0.0.1;Port=3306;Database=avanzada;Uid=root;Pwd=Mycarlos-07;";
+       
         public Form1()
         {
             InitializeComponent();
@@ -23,6 +29,29 @@ namespace Formulario_De_Regristro_Actividad04
             texedad.TextChanged += ValidarEdad;
             texestatura.TextChanged += ValidarEstatura;
             textelefono.Leave += ValidarTelefono;
+
+        }
+
+        private void insertarRegistros(string nombre, string apellidos, int edad, decimal estatura, string telefono, string genero)
+        {
+            using (MySqlConnection conectar = new MySqlConnection(SQLConection))
+            {
+                conectar.Open();
+
+                string insertQuery = "INSERT INTO registros (nombres, apellidos, telefono, estatura, edad, genero) " +
+                                     "VALUES (@nombres, @apellidos, @telefono, @estatura, @edad, @genero)";
+
+                using (MySqlCommand comando = new MySqlCommand(insertQuery, conectar))
+                {
+                    comando.Parameters.AddWithValue("@nombres", nombre);
+                    comando.Parameters.AddWithValue("@apellidos", apellidos);
+                    comando.Parameters.AddWithValue("@telefono", telefono);
+                    comando.Parameters.AddWithValue("@estatura", estatura);
+                    comando.Parameters.AddWithValue("@edad", edad);
+                    comando.Parameters.AddWithValue("@genero", genero);
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
         private void ValidarNombre(object sender, EventArgs e)
@@ -105,14 +134,14 @@ namespace Formulario_De_Regristro_Actividad04
         }
 
 
-        private void butguardar_Click(object sender, EventArgs e)
+        private void butguardar_click(object sender, EventArgs e)
         {
             string nombres = texnombres.Text;
             string apellidos = texapellido.Text;
             string telefono = textelefono.Text;
             string edad = texedad.Text;
             string estatura = texestatura.Text;
-            string genero = "" ;
+            string genero = "";
 
             if (radMascu.Checked)
             {
@@ -127,30 +156,42 @@ namespace Formulario_De_Regristro_Actividad04
                 genero = "Otro";
             }
 
-            string mensaje = $"Nombres:{nombres}\n\r Apellidos:{apellidos}\n\r " +
-                $"Genero:{genero}\n\r Edad:{edad}\n\r Telefono:{telefono}\n\r Estatura:{estatura}\n\r";
-            MessageBox.Show(mensaje, "Registros de Usuaio", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-            //Ruta del almacenamieno de archivo TXT
-            string rutaFile = "D:\\Practica04\\Formulario_De_Registro_Actividad04.txt";
-
-            //Valor de verificaciòn de archivo existen
-            bool ArchivoExiste = File.Exists(rutaFile);
-
-            //Instansación de la Clase/objeto StreamWriter para escribir archivo TXT
-            using (StreamWriter Escritor = new StreamWriter(rutaFile, true))
-
-            
+            // Validar que todo esté correcto antes de guardar
+            if (!EsEnteroValido(edad) || !DecimalValido(estatura) ||
+                !TelefonoValido(telefono) || !EstextoValido(nombres) ||
+                !EsApellidoValido(apellidos) || genero == "")
             {
-                if (ArchivoExiste)
-                {
-                    Escritor.WriteLine();
-                }
-                Escritor.WriteLine(mensaje);
+                MessageBox.Show("Por favor, ingrese datos válidos en todos los campos.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            MessageBox.Show(mensaje, "Registro de -Usuario", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            
+            string datos = $"Nombres: {nombres}\r\nApellidos: {apellidos}\r\n" +
+                           $"Género: {genero}\r\nEdad: {edad}\r\n" +
+                           $"Teléfono: {telefono}\r\nEstatura: {estatura}\r\n";
+
+            try
+            {
+                // 1) Guardar en el archivo TXT
+                string rutaArchivo = @"D:\Practica04\Formulario_De_Registro_Actividad04.txt";
+                Directory.CreateDirectory(Path.GetDirectoryName(rutaArchivo));
+                File.AppendAllText(rutaArchivo, datos + Environment.NewLine);
+
+                // 2) Guardar en la base de datos
+                insertarRegistros(nombres, apellidos, int.Parse(edad),
+                                  decimal.Parse(estatura), telefono, genero);
+
+                MessageBox.Show("Datos guardados en TXT y en la Base de Datos:\n\n" + datos,
+                                "Registro de Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error de base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar: " + ex.Message);
+            }
         }
 
         private void butlimpiar_Click(object sender, EventArgs e)
